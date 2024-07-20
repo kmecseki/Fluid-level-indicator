@@ -1,3 +1,7 @@
+local pipe_subgroup = "energy-pipe-distribution"
+if mods["Flow Control"] and settings.startup["flow-control-new-group"].value == true then
+  pipe_subgroup = "pipe-distribution"
+end
 
 empty_sprite = { 
   filename = "__core__/graphics/empty.png", 
@@ -264,7 +268,7 @@ data:extend({
     icon = "__Fluid-level-indicator__/graphics/icons/T-icon64.png",
     icon_size = 64,
     flags = {},
-    subgroup = "energy-pipe-distribution",
+    subgroup = pipe_subgroup,
     order = "f[fluid-level-indicator]",
     place_result = "fluid-level-indicator",
     stack_size = 50
@@ -275,7 +279,7 @@ data:extend({
   icon = "__Fluid-level-indicator__/graphics/icons/straight-icon128.png",
   icon_size = 128,
   flags = {},
-  subgroup = "energy-pipe-distribution",
+  subgroup = pipe_subgroup,
   order = "f[fluid-level-indicator-straight]",
   place_result = "fluid-level-indicator-straight",
   stack_size = 50
