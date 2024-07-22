@@ -6,17 +6,21 @@ end
 
 
 if mods["boblogistics"] then
-    if settings.startup["bobmods-logistics-highpipes"].value == true then
-        require("compatibility/bobsmods/boblogistics/items.lua")
-        require("compatibility/bobsmods/boblogistics/recipes.lua")
-        require("compatibility/bobsmods/boblogistics/technologies.lua")
+    if settings.startup["bobmods-logistics-highpipes"] ~= nil then
+        if settings.startup["bobmods-logistics-highpipes"].value == true then
+            require("compatibility/bobsmods/boblogistics/items.lua")
+            require("compatibility/bobsmods/boblogistics/recipes.lua")
+            require("compatibility/bobsmods/boblogistics/technologies.lua")
+        end
     end
 end
 
 if mods["boblogistics"] and mods["bobores"] and mods["bobplates"] then
-    if settings.startup["bobmods-logistics-highpipes"].value == true then
-        require("compatibility/bobsmods/bobores/items.lua")
-        require("compatibility/bobsmods/bobores/recipes.lua")
-        require("compatibility/bobsmods/bobores/technologies.lua")
+    if settings.startup["bobmods-logistics-highpipes"] ~= nil then
+        if settings.startup["bobmods-logistics-highpipes"].value == true then
+            require("compatibility/bobsmods/bobores/items.lua")
+            require("compatibility/bobsmods/bobores/recipes.lua")
+            require("compatibility/bobsmods/bobores/technologies.lua")
+        end
     end
 end

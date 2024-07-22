@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.8.5
+Date: 22 July 2024
+  Minor Features:
+    - Added German translation (Thanks to knniDE)
+    - Fluid level indicators are now grouped with pipes when using Flow Control or Space Exploration.
+---------------------------------------------------------------------------------------------------
 Version: 0.8.4
 Date: 1 April 2024
   Bugfixes:

@@ -1,6 +1,11 @@
 local pipe_subgroup = "energy-pipe-distribution"
-if mods["Flow Control"] and settings.startup["flow-control-new-group"].value == true then
-  pipe_subgroup = "pipe-distribution"
+if mods["Flow Control"] and settings.startup["flow-control-new-group"]~=nil then
+  if settings.startup["flow-control-new-group"].value == true then
+    pipe_subgroup = "pipe-distribution"
+  end
+end
+if mods["space-exploration"] then
+  pipe_subgroup = "pipe"
 end
 
 empty_sprite = { 
@@ -59,8 +64,8 @@ circuit_connector_definitions["fluid-level-indicator-straight"] = circuit_connec
   }
 )
 
-circuit_connector_definitions["fluid-level-indicator-k2"] = circuit_connector_definitions["fluid-level-indicator"]
-circuit_connector_definitions["fluid-level-indicator-straight-k2"] = circuit_connector_definitions["fluid-level-indicator-straight"]
+--circuit_connector_definitions["fluid-level-indicator-k2"] = circuit_connector_definitions["fluid-level-indicator"]
+--circuit_connector_definitions["fluid-level-indicator-straight-k2"] = circuit_connector_definitions["fluid-level-indicator-straight"]
 
 -- fluid level indicator 
 
