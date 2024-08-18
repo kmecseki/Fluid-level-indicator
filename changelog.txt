@@ -1,8 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.8.6
+Date: 18 August 2024
+  Minor Features:
+    - Added Chinese translation (Thanks to PlexPt).
+    - Added Hungarian translation.
+---------------------------------------------------------------------------------------------------
 Version: 0.8.5
 Date: 22 July 2024
   Minor Features:
-    - Added German translation (Thanks to knniDE)
+    - Added German translation (Thanks to knniDE).
     - Fluid level indicators are now grouped with pipes when using Flow Control or Space Exploration.
 ---------------------------------------------------------------------------------------------------
 Version: 0.8.4
@@ -67,7 +73,7 @@ Date: 5 October 2023
 Version: 0.6.1
 Date: 14 June 2023
   Other:
-    - Fixed changelog style to be visible from the game - Thanks ComradeEcho
+    - Fixed changelog style to be visible from the game - Thanks ComradeEcho.
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.0
 Date: 16 March 2023
