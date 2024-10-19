@@ -1,6 +1,6 @@
 # Fluid-level-indicator
 
-Fluid level indicator and flow meter with a numerical display, that changes color based on how full the fluid system is (in a stationary system). You can attach it to a tank to measure the fluid level or can be used to see when to add a pump.
+Fluid level indicator and flow meter with a numerical display, that changes color based on how full the fluid system is.
 
 There are two versions: straight pipe and cross pipe.
 
@@ -22,4 +22,3 @@ Install from Factorio directly or copy these files under the mod directory.
 <img src="https://assets-mod.factorio.com/assets/4a43cbb38504d61f3d9e567c467a9c8bb43c6432.png" alt="Fluid level mode" width="450" />
 <img src="https://assets-mod.factorio.com/assets/d0ae91816f7cfbe3d094e275ab1a1fe8005b935a.png" alt="Fluid level mode" width="450" />
 <img src="https://assets-mod.factorio.com/assets/bd6e59b7c806c975a0b1fb523a127f13d72237c5.png" alt="Fluid level mode" width="450" />
-

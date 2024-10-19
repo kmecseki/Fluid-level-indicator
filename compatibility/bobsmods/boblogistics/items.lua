@@ -15,6 +15,8 @@ fluid_level_indicator_bobsteel.circuit_wire_connection_points = circuit_connecto
 fluid_level_indicator_bobsteel.circuit_connector_sprites = circuit_connector_definitions["fluid-level-indicator-straight"].sprites
 fluid_level_indicator_bobsteel.circuit_wire_max_distance = default_circuit_wire_max_distance
 fluid_level_indicator_bobsteel.se_allow_in_space = true
+fluid_level_indicator_bobsteel.max_health = 100
+fluid_level_indicator_bobsteel.circuit_connector = circuit_connector_definitions["fluid-level-indicator-straight"]
 fluid_level_indicator_bobsteel.water_reflection = 
 {
   pictures =
@@ -33,67 +35,48 @@ fluid_level_indicator_bobsteel.water_reflection =
 
 fluid_level_indicator_bobsteel.fluid_box = 
 {
-      base_area = 1,
-      base_level = 0,
-      height = 1,
-      pipe_covers = pipecoverspictures(),
-      pipe_connections =
-      {
-        { position = {0, -1} },
-        { position = {0, 1} }
-      },
+  volume = 100,
+  base_area = 1,
+  base_level = 0,
+  height = 1,
+  pipe_covers = pipecoverspictures(),
+  pipe_connections =
+  {
+    { flow_direction = "input-output", direction = defines.direction.south, position = {0, -0.0001} },
+    { flow_direction = "input-output", direction = defines.direction.north, position = {0, 0.0001} }
+  },
       hide_connection_info = true
 }
 fluid_level_indicator_bobsteel.pictures = 
 {
-      picture =
+  picture =
+  {
+    sheets =
+    {
       {
-        sheets =
-        {
-          {
-            filename = "__Fluid-level-indicator__/graphics/entities/pipe-straight-screen.png",
-            priority = "extra-high",
-            frames = 2,
-            width = 64,
-            height = 64,
-            --scale = 0.5,
-            hr_version =
-            {
-              filename = "__Fluid-level-indicator__/graphics/entities/hr-pipe-straight-screen.png",
-              priority = "extra-high",
-              frames = 2,
-              width = 128,
-              height = 128,
-              scale = 0.5,
-            }
-          },
-          {
-            filename = "__Fluid-level-indicator__/graphics/entities/pipe-straight-shadow.png",
-            priority = "extra-high",
-            frames = 2,
-            width = 64,
-            height = 64,
-            shift = util.by_pixel(0, 0),
-            --scale = 0.5,
-            draw_as_shadow = true,
-            hr_version =
-            {
-              filename = "__Fluid-level-indicator__/graphics/entities/hr-pipe-straight-shadow.png",
-              priority = "extra-high",
-              frames = 2,
-              width = 128,
-              height = 128,
-              shift = util.by_pixel(0, 0),
-              scale = 0.5,
-              draw_as_shadow = true
-            }
-          }
-        }
+        filename = "__Fluid-level-indicator__/graphics/entities/hr-pipe-straight-screen.png",
+        priority = "extra-high",
+        frames = 2,
+        width = 128,
+        height = 128,
+        scale = 0.5,
       },
-      gas_flow = empty_sprite,
-      fluid_background = empty_sprite,
-      window_background = empty_sprite,
-      flow_sprite = empty_sprite
+      {
+        filename = "__Fluid-level-indicator__/graphics/entities/hr-pipe-straight-shadow.png",
+        priority = "extra-high",
+        frames = 2,
+        width = 128,
+        height = 128,
+        shift = util.by_pixel(0, 0),
+        scale = 0.5,
+        draw_as_shadow = true
+      }
+    }
+  },
+  gas_flow = empty_sprite,
+  fluid_background = empty_sprite,
+  window_background = empty_sprite,
+  flow_sprite = empty_sprite
 }
 
 -- plastic fluid level indicator straight for bobs logistics
@@ -113,6 +96,8 @@ fluid_level_indicator_bobplastic.circuit_wire_connection_points = circuit_connec
 fluid_level_indicator_bobplastic.circuit_connector_sprites = circuit_connector_definitions["fluid-level-indicator-straight"].sprites
 fluid_level_indicator_bobplastic.circuit_wire_max_distance = default_circuit_wire_max_distance
 fluid_level_indicator_bobplastic.se_allow_in_space = true
+fluid_level_indicator_bobplastic.max_health = 100
+fluid_level_indicator_bobplastic.circuit_connector = circuit_connector_definitions["fluid-level-indicator-straight"]
 fluid_level_indicator_bobplastic.water_reflection = 
 {
   pictures =
@@ -131,86 +116,67 @@ fluid_level_indicator_bobplastic.water_reflection =
 
 fluid_level_indicator_bobplastic.fluid_box = 
 {
-      base_area = 1,
-      base_level = 0,
-      height = 1,
-      pipe_covers = pipecoverspictures(),
-      pipe_connections =
-      {
-        { position = {0, -1} },
-        { position = {0, 1} }
-      },
-      hide_connection_info = true
+  volume = 100,
+  base_area = 1,
+  base_level = 0,
+  height = 1,
+  pipe_covers = pipecoverspictures(),
+  pipe_connections =
+    {
+      { flow_direction = "input-output", direction = defines.direction.south, position = {0, -0.0001} },
+      { flow_direction = "input-output", direction = defines.direction.north, position = {0, 0.0001} }
+    },
+    hide_connection_info = true
 }
 fluid_level_indicator_bobplastic.pictures = 
 {
-      picture =
+  picture =
+  {
+    sheets =
+    {
       {
-        sheets =
-        {
-          {
-            filename = "__Fluid-level-indicator__/graphics/entities/pipe-straight-screen.png",
-            priority = "extra-high",
-            frames = 2,
-            width = 64,
-            height = 64,
-            --scale = 0.5,
-            hr_version =
-            {
-              filename = "__Fluid-level-indicator__/graphics/entities/hr-pipe-straight-screen.png",
-              priority = "extra-high",
-              frames = 2,
-              width = 128,
-              height = 128,
-              scale = 0.5,
-            }
-          },
-          {
-            filename = "__Fluid-level-indicator__/graphics/entities/pipe-straight-shadow.png",
-            priority = "extra-high",
-            frames = 2,
-            width = 64,
-            height = 64,
-            shift = util.by_pixel(0, 0),
-            --scale = 0.5,
-            draw_as_shadow = true,
-            hr_version =
-            {
-              filename = "__Fluid-level-indicator__/graphics/entities/hr-pipe-straight-shadow.png",
-              priority = "extra-high",
-              frames = 2,
-              width = 128,
-              height = 128,
-              shift = util.by_pixel(0, 0),
-              scale = 0.5,
-              draw_as_shadow = true
-            }
-          }
-        }
+        filename = "__Fluid-level-indicator__/graphics/entities/hr-pipe-straight-screen.png",
+        priority = "extra-high",
+        frames = 2,
+        width = 128,
+        height = 128,
+        scale = 0.5,
       },
-      gas_flow = empty_sprite,
-      fluid_background = empty_sprite,
-      window_background = empty_sprite,
-      flow_sprite = empty_sprite
+      {
+        filename = "__Fluid-level-indicator__/graphics/entities/hr-pipe-straight-shadow.png",
+        priority = "extra-high",
+        frames = 2,
+        width = 128,
+        height = 128,
+        shift = util.by_pixel(0, 0),
+        scale = 0.5,
+        draw_as_shadow = true
+      }
+    }
+  },
+  gas_flow = empty_sprite,
+  fluid_background = empty_sprite,
+  window_background = empty_sprite,
+  flow_sprite = empty_sprite
 }
 
 if settings.startup["bobmods-logistics-highpipes"].value == true then
-    fluid_level_indicator_bobsteel.fluid_box.height = 1.5
-    fluid_level_indicator_bobplastic.fluid_box.height = 2.25
+  fluid_level_indicator_bobsteel.fluid_box.height = 1.5
+  fluid_level_indicator_bobplastic.fluid_box.height = 2.25
 end
 
 
 data:extend({
 {
-    type = "item",
-    name = "fluid-level-indicator-st-bobs-steel",
-    icon = "__Fluid-level-indicator__/graphics/icons/straight-icon128-MK2.png",
-    icon_size = 128,
-    flags = {},
-    subgroup = "energy-pipe-distribution",
-    order = "fg[fluid-level-indicator-b0]",
-    place_result = "fluid-level-indicator-st-bobs-steel",
-    stack_size = 50
+  type = "item",
+  name = "fluid-level-indicator-st-bobs-steel",
+  icon = "__Fluid-level-indicator__/graphics/icons/straight-icon128-MK2.png",
+  icon_size = 128,
+  flags = {},
+  subgroup = "energy-pipe-distribution",
+  order = "fg[fluid-level-indicator-b0]",
+  place_result = "fluid-level-indicator-st-bobs-steel",
+  stack_size = 50
 },
 {
   type = "item",
@@ -223,7 +189,6 @@ data:extend({
   place_result = "fluid-level-indicator-st-bobs-plastic",
   stack_size = 50
 },
-
 fluid_level_indicator_bobsteel,
 fluid_level_indicator_bobplastic
 })

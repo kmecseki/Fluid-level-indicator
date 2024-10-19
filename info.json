@@ -1,11 +1,11 @@
 {
-    "name": "Fluid-level-indicator",
-    "version": "0.8.7",
-    "factorio_version": "1.1",
-    "title": "Fluid Level Indicator",
-    "author": "kmecseki",
-    "contact": "",
-    "homepage": "",
-    "description": "Numerical display showing the fluid/gas level in a system. It can also measure flow."
-  }
+  "name": "Fluid-level-indicator",
+  "version": "0.9.0",
+  "factorio_version": "1.2",
+  "title": "Fluid Level Indicator",
+  "author": "kmecseki",
+  "contact": "",
+  "homepage": "",
+  "description": "Numerical display showing the fluid/gas level in a system."
+}
   

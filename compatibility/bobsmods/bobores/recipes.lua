@@ -5,13 +5,13 @@ data:extend({
         energy_required = 2,
         enabled = false,
         ingredients = {
-            {"tungsten-plate", 1},
-            {"titanium-plate", 1},
-            {"tungsten-pipe", 1},
-            {"small-lamp",1}
+            {type = "item", name = "tungsten-plate", amount = 1},
+            {type = "item", name = "titanium-plate", amount = 1},
+            {type = "item", name = "tungsten-pipe", amount = 1},
+            {type = "item", name = "small-lamp", amount = 1}
         },
         results = {
-            {"fluid-level-indicator-st-bobs-tungsten", 1}
+            {type = "item", name = "fluid-level-indicator-st-bobs-tungsten", amount = 1}
         }
     },
     {
@@ -20,13 +20,13 @@ data:extend({
         energy_required = 2,
         enabled = false,
         ingredients = {
-            {"copper-tungsten-alloy", 1},
-            {"copper-tungsten-pipe", 1},
-            {"nitinol-alloy", 1},
-            {"small-lamp",1}
+            {type = "item", name = "copper-tungsten-alloy", amount = 1},
+            {type = "item", name = "copper-tungsten-pipe", amount = 1},
+            {type = "item", name = "nitinol-alloy", amount = 1},
+            {type = "item", name = "small-lamp", amount = 1}
         },
         results = {
-            {"fluid-level-indicator-st-bobs-coppertungsten", 1}
+            {type = "item", name = "fluid-level-indicator-st-bobs-coppertungsten", amount = 1}
         }
     }
 })

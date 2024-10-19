@@ -15,6 +15,7 @@ fluid_level_indicator_bobtungsten.circuit_wire_connection_points = circuit_conne
 fluid_level_indicator_bobtungsten.circuit_connector_sprites = circuit_connector_definitions["fluid-level-indicator-straight"].sprites
 fluid_level_indicator_bobtungsten.circuit_wire_max_distance = default_circuit_wire_max_distance
 fluid_level_indicator_bobtungsten.se_allow_in_space = true
+fluid_level_indicator_bobtungsten.max_health = 100
 fluid_level_indicator_bobtungsten.water_reflection = 
 {
   pictures =
@@ -113,6 +114,7 @@ fluid_level_indicator_bobcoppertungsten.circuit_wire_connection_points = circuit
 fluid_level_indicator_bobcoppertungsten.circuit_connector_sprites = circuit_connector_definitions["fluid-level-indicator-straight"].sprites
 fluid_level_indicator_bobcoppertungsten.circuit_wire_max_distance = default_circuit_wire_max_distance
 fluid_level_indicator_bobcoppertungsten.se_allow_in_space = true
+fluid_level_indicator_bobcoppertungsten.max_health = 100
 fluid_level_indicator_bobcoppertungsten.water_reflection = 
 {
   pictures =

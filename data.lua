@@ -1,7 +1,8 @@
-require("prototypes/fluid-indicator")
+require("prototypes/entities")
 require("prototypes/recipes")
 require("prototypes/technologies")
 require("prototypes/fonts")
 require("prototypes/sprites")
 
-require("compatibility/compatibility")
+-- Turned off for now until further tests are done.
+--require("compatibility/compatibility")
