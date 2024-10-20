@@ -78,7 +78,7 @@ fluid_level_indicator.collision_box = {{-0.4, -0.4}, {0.4, 0.4}}
 fluid_level_indicator.selection_box = {{-0.6, -0.6}, {0.6, 0.6}}
 fluid_level_indicator.apply_runtime_tint = true
 fluid_level_indicator.corpse = "pipe-remnants"
-fluid_level_indicator.dying_explosion = "pump-explosion"
+fluid_level_indicator.dying_explosion = "pipe-explosion"
 fluid_level_indicator.circuit_wire_connection_points = circuit_connector_definitions["fluid-level-indicator"].points
 fluid_level_indicator.circuit_connector_sprites = circuit_connector_definitions["fluid-level-indicator"].sprites
 fluid_level_indicator.circuit_wire_max_distance = default_circuit_wire_max_distance
@@ -123,22 +123,12 @@ fluid_level_indicator.pictures =
     sheets =
     {
       {
-        filename = "__Fluid-level-indicator__/graphics/entities/pipe-cross-screen.png",
+        filename = "__Fluid-level-indicator__/graphics/entities/pipe-cross-screen-wshadow.png",
         priority = "extra-high",
         frames = 1,
         width = 128,
         height = 128,
         scale = 0.5
-      },
-      {
-        filename = "__Fluid-level-indicator__/graphics/entities/pipe-cross-shadow.png",
-        priority = "extra-high",
-        frames = 1,
-        width = 128,
-        height = 128,
-        shift = util.by_pixel(5, 0),
-        scale = 0.5,
-        draw_as_shadow = true
       }
     }
   },
@@ -160,7 +150,7 @@ fluid_level_indicator_straight.collision_box = {{-0.32, -0.4}, {0.32, 0.4}}
 fluid_level_indicator_straight.selection_box = {{-0.4, -0.5}, {0.4, 0.5}}
 fluid_level_indicator_straight.apply_runtime_tint = true
 fluid_level_indicator_straight.corpse = "pipe-remnants"
-fluid_level_indicator_straight.dying_explosion = "pump-explosion"
+fluid_level_indicator_straight.dying_explosion = "pipe-explosion"
 fluid_level_indicator_straight.circuit_wire_connection_points = circuit_connector_definitions["fluid-level-indicator-straight"].points
 fluid_level_indicator_straight.circuit_connector_sprites = circuit_connector_definitions["fluid-level-indicator-straight"].sprites
 fluid_level_indicator_straight.circuit_wire_max_distance = default_circuit_wire_max_distance
@@ -203,23 +193,13 @@ fluid_level_indicator_straight.pictures =
     sheets =
     {
       {
-        filename = "__Fluid-level-indicator__/graphics/entities/pipe-straight-screen.png",
+        filename = "__Fluid-level-indicator__/graphics/entities/pipe-straight-screen-wshadow.png",
         priority = "extra-high",
         frames = 2,
         width = 128,
         height = 128,
         scale = 0.5
       }
-    },
-    {
-      filename = "__Fluid-level-indicator__/graphics/entities/pipe-straight-shadow.png",
-      priority = "extra-high",
-      frames = 2,
-      width = 128,
-      height = 128,
-      shift = util.by_pixel(0, 0),
-      scale = 0.5,
-      draw_as_shadow = true
     }
   },
   gas_flow = empty_sprite,
