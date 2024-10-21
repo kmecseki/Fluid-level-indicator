@@ -145,7 +145,7 @@ local function fli_update()
             storage.flidigpc[storage.fliindex] = nil
             storage.flis[storage.fliindex] = nil
           else
-            rendering.destroy(storage.flitexts[storage.fliindex])
+            storage.flitexts[storage.fliindex].destroy()
             storage.flitexts[storage.fliindex] = nil
             storage.flis[storage.fliindex] = nil
           end
