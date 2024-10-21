@@ -79,7 +79,7 @@ function removedfli(removed_entity)
         storage.flidig100[removed_entity.unit_number] = nil
         storage.flidigpc[removed_entity.unit_number] = nil
       else
-        rendering.destroy(storage.flitexts[removed_entity.unit_number])
+        storage.flitexts[removed_entity.unit_number].destroy()
         storage.flitexts[removed_entity.unit_number] = nil
       end
     end
