@@ -1,6 +1,25 @@
 mod_gui = require("mod-gui")
 require "fli/fli"
 
+local picker_dollies_names = {}
+
+local function picker_dollies_moved(event)
+    if not event.moved_entity or not event.moved_entity.valid then return end
+    if not picker_dollies_names[event.moved_entity.name] then return end
+
+    move_textbox(event.moved_entity)
+end
+
+local function picker_dollies_init()
+    if remote.interfaces['PickerDollies'] then
+        script.on_event(remote.call('PickerDollies', 'dolly_moved_entity_id'), picker_dollies_moved)
+
+        for _, name in pairs(fluidentities) do
+            picker_dollies_names[name] = true
+        end
+    end
+end
+
 script.on_event(defines.events.on_built_entity, function(event) placedfli(event.entity) end)
 script.on_event(defines.events.on_robot_built_entity, function(event) placedfli(event.entity) end)
 script.on_event(defines.events.script_raised_built, function(event) placedfli(event.entity) end)
@@ -64,7 +83,13 @@ script.on_init(function()
     storage.fliindex = 1
     storage.flitype = {}
     storage.currentfliunitnumber = nil
+
+    picker_dollies_init()
     end)
+
+script.on_load(function()
+    picker_dollies_init()
+end)
 
 script.on_event(defines.events.on_tick, flion_tick)
 

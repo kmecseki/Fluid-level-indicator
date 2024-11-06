@@ -157,6 +157,30 @@ local function fli_update()
   end
 end
 
+function move_textbox(fli)
+    if settings.startup['font-picker'].value == 'sprite' then
+        if storage.flidig100[fli.unit_number] then
+            storage.flidig100[fli.unit_number].target = { fli.position.x - 0.29, fli.position.y - 0.06 }
+        end
+        if storage.flidig10[fli.unit_number] then
+            storage.flidig10[fli.unit_number].target = { fli.position.x - 0.12, fli.position.y - 0.06 }
+        end
+        if storage.flidig1[fli.unit_number] then
+            storage.flidig1[fli.unit_number].target = { fli.position.x + 0.1, fli.position.y - 0.06 }
+        end
+        if storage.flidigpc[fli.unit_number] then
+            storage.flidigpc[fli.unit_number].target = { fli.position.x + 0.28, fli.position.y - 0.06 }
+        end
+    elseif settings.startup['font-picker'].value == 'default' then
+        if storage.flitexts[fli.unit_number] then
+            storage.flitexts[fli.unit_number].target = { fli.position.x, fli.position.y - 0.34 }
+        end
+    else
+        if storage.flitexts[fli.unit_number] then
+            storage.flitexts[fli.unit_number].target = { fli.position.x + 0.03, fli.position.y - 0.32 }
+        end
+    end
+end
 
 local function create_textbox(fli, surface)
 
