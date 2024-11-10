@@ -7,11 +7,13 @@ script.on_event(defines.events.on_robot_built_entity, function(event) placedfli(
 script.on_event(defines.events.script_raised_built, function(event) placedfli(event.entity) end)
 script.on_event(defines.events.script_raised_revive, function(event) placedfli(event.entity) end)
 script.on_event(defines.events.on_entity_cloned, function(event) placedfli(event.destination) end)
+script.on_event(defines.events.on_space_platform_built_entity, function(event) placedfli(event.entity) end)
 
 script.on_event(defines.events.on_pre_player_mined_item, function(event) removedfli(event.entity) end)
 script.on_event(defines.events.on_robot_pre_mined, function(event) removedfli(event.entity) end)
 script.on_event(defines.events.on_entity_died, function(event) removedfli(event.entity) end)
 script.on_event(defines.events.script_raised_destroy, function(event) removedfli(event.entity) end)
+script.on_event(defines.events.on_space_platform_mined_entity, function(event) removedfli(event.entity) end)
 
 script.on_event(defines.events.on_pre_chunk_deleted, function(event)
     local surface = game.surfaces[event.surface_index]
