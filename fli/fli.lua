@@ -63,23 +63,33 @@ local function calc_color(fluid_count, fli_type)
 end
 
 
-function removedfli(removed_entity)
+local function destroyit(globalcontainer)
+  if globalcontainer ~= nil then
+    globalcontainer.destroy()
+  end
+end
 
+
+function removedfli(removed_entity)
+  if removed_entity == nil then
+    return
+  end
   for _, entityname in ipairs(fluidentities) do
     if removed_entity.name == entityname then
       storage.flis[removed_entity.unit_number] = nil
       storage.flitype[removed_entity.unit_number] = nil
       if settings.startup["font-picker"].value=="sprite" then
-        storage.flidig1[removed_entity.unit_number].destroy()
-        storage.flidig10[removed_entity.unit_number].destroy()
-        storage.flidig100[removed_entity.unit_number].destroy()
-        storage.flidigpc[removed_entity.unit_number].destroy()
+        destroyit(storage.flidig1[removed_entity.unit_number])
+        destroyit(storage.flidig10[removed_entity.unit_number])
+        destroyit(storage.flidig100[removed_entity.unit_number])
+        destroyit(storage.flidigpc[removed_entity.unit_number])
+        
         storage.flidig1[removed_entity.unit_number] = nil
         storage.flidig10[removed_entity.unit_number] = nil
         storage.flidig100[removed_entity.unit_number] = nil
         storage.flidigpc[removed_entity.unit_number] = nil
       else
-        storage.flitexts[removed_entity.unit_number].destroy()
+        destroyit(storage.flitexts[removed_entity.unit_number])
         storage.flitexts[removed_entity.unit_number] = nil
       end
     end
@@ -137,17 +147,17 @@ local function fli_update()
           end
         else
           if settings.startup["font-picker"].value=="sprite" then
-            storage.flidig1[storage.fliindex].destroy()
-            storage.flidig10[storage.fliindex].destroy()
-            storage.flidig100[storage.fliindex].destroy()
-            storage.flidigpc[storage.fliindex].destroy()
+            destroyit(storage.flidig1[storage.fliindex])
+            destroyit(storage.flidig10[storage.fliindex])
+            destroyit(storage.flidig100[storage.fliindex])
+            destroyit(storage.flidigpc[storage.fliindex])
             storage.flidig1[storage.fliindex] = nil
             storage.flidig10[storage.fliindex] = nil
             storage.flidig100[storage.fliindex] = nil
             storage.flidigpc[storage.fliindex] = nil
             storage.flis[storage.fliindex] = nil
           else
-            storage.flitexts[storage.fliindex].destroy()
+            destroyit(storage.flitexts[storage.fliindex])
             storage.flitexts[storage.fliindex] = nil
             storage.flis[storage.fliindex] = nil
           end
