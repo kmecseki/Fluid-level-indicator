@@ -97,6 +97,32 @@ function removedfli(removed_entity)
 end
 
 
+local function move_textbox(fli)
+  if settings.startup['font-picker'].value == 'sprite' then
+      if storage.flidig100[fli.unit_number] then
+          storage.flidig100[fli.unit_number].target = { fli.position.x - 0.29, fli.position.y - 0.06 }
+      end
+      if storage.flidig10[fli.unit_number] then
+          storage.flidig10[fli.unit_number].target = { fli.position.x - 0.12, fli.position.y - 0.06 }
+      end
+      if storage.flidig1[fli.unit_number] then
+          storage.flidig1[fli.unit_number].target = { fli.position.x + 0.1, fli.position.y - 0.06 }
+      end
+      if storage.flidigpc[fli.unit_number] then
+          storage.flidigpc[fli.unit_number].target = { fli.position.x + 0.28, fli.position.y - 0.06 }
+      end
+  elseif settings.startup['font-picker'].value == 'default' then
+      if storage.flitexts[fli.unit_number] then
+          storage.flitexts[fli.unit_number].target = { fli.position.x, fli.position.y - 0.34 }
+      end
+  else
+      if storage.flitexts[fli.unit_number] then
+          storage.flitexts[fli.unit_number].target = { fli.position.x + 0.03, fli.position.y - 0.32 }
+      end
+  end
+end
+
+
 local function fli_update()
 
   if next(storage.flis)~=nil then
@@ -121,29 +147,23 @@ local function fli_update()
           local color = {1, 1, 1, 1}
           color = calc_color(fluid_count, storage.flitype[fli.unit_number])
           if settings.startup["font-picker"].value=="sprite" then
-            if storage.flitype[fli.unit_number] == 4 then
-              storage.flidig1[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),2)
-              storage.flidig10[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),3)
-              storage.flidig100[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),4)
-              storage.flidigpc[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),1)
-            else
-              storage.flidig1[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),1)
-              storage.flidig10[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),2)
-              storage.flidig100[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),3)
-              storage.flidigpc[storage.fliindex].sprite = "flinumberpc"
+            if storage.flidig100[fli.unit_number].target ~= { fli.position.x - 0.29, fli.position.y - 0.06 } then 
+              move_textbox(fli)
             end
+            storage.flidig1[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),1)
+            storage.flidig10[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),2)
+            storage.flidig100[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),3)
+            storage.flidigpc[storage.fliindex].sprite = "flinumberpc"
             storage.flidig1[fli.unit_number].color = color
             storage.flidig10[fli.unit_number].color = color
             storage.flidig100[fli.unit_number].color = color
             storage.flidigpc[fli.unit_number].color = color
           else
-            if storage.flitype[fli.unit_number] == 4 then
-              storage.flitexts[fli.unit_number].text = tostring(string.format("%.f",fluid_count))
-              storage.flitexts[fli.unit_number].color = color
-            else
-              storage.flitexts[fli.unit_number].text = tostring(string.format("%.f",fluid_count)).."%"
-              storage.flitexts[fli.unit_number].color = color
+            if storage.flitexts[fli.unit_number].target ~= { fli.position.x, fli.position.y - 0.34 } then
+              move_textbox(fli)
             end
+            storage.flitexts[fli.unit_number].text = tostring(string.format("%.f",fluid_count)).."%"
+            storage.flitexts[fli.unit_number].color = color
           end
         else
           if settings.startup["font-picker"].value=="sprite" then

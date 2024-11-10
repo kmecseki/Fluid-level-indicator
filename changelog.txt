@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.9.4
+Date: 10 November 2024
+  Minor Bugfix:
+    - Added extra check for deleting units to fix a rare crash.
+    - Added entity location check to support PickerDollies and similar mods (Thanks to hgschmie).
+  Minor changes:
+    - Removed some redundant flow meter code.
+---------------------------------------------------------------------------------------------------
 Version: 0.9.3
 Date: 24 October 2024
   Minor Bugfix:

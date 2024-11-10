@@ -1,6 +1,7 @@
 mod_gui = require("mod-gui")
 require "fli/fli"
 
+
 script.on_event(defines.events.on_built_entity, function(event) placedfli(event.entity) end)
 script.on_event(defines.events.on_robot_built_entity, function(event) placedfli(event.entity) end)
 script.on_event(defines.events.script_raised_built, function(event) placedfli(event.entity) end)
@@ -65,6 +66,7 @@ script.on_init(function()
     storage.flitype = {}
     storage.currentfliunitnumber = nil
     end)
+
 
 script.on_event(defines.events.on_tick, flion_tick)
 
