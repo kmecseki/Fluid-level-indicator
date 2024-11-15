@@ -147,8 +147,10 @@ local function fli_update()
           local color = {1, 1, 1, 1}
           color = calc_color(fluid_count, storage.flitype[fli.unit_number])
           if settings.startup["font-picker"].value=="sprite" then
-            if storage.flidig100[fli.unit_number].target ~= { fli.position.x - 0.29, fli.position.y - 0.06 } then 
-              move_textbox(fli)
+            if storage.flidig100[fli.unit_number] ~= nil then
+              if storage.flidig100[fli.unit_number].target ~= { fli.position.x - 0.29, fli.position.y - 0.06 } then 
+                move_textbox(fli)
+              end
             end
             storage.flidig1[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),1)
             storage.flidig10[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),2)
