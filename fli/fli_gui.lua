@@ -1,18 +1,6 @@
 function open_fli_gui(player, ent)
-
-  local fluidentities = 
-  {
-    "fluid-level-indicator",
-    "fluid-level-indicator-straight",
-    "fluid-level-indicator-k2",
-    "fluid-level-indicator-straight-k2",
-    "fluid-level-indicator-st-bobs-steel",
-    "fluid-level-indicator-st-bobs-plastic",
-    "fluid-level-indicator-st-bobs-tungsten",
-    "fluid-level-indicator-st-bobs-coppertungsten"
-  }
   if not ent or not ent.valid then
-    for _, entityname in ipairs(fluidentities) do
+    for _, entityname in ipairs(flientities) do
       if ent.name ~= entityname then
         return
       end

@@ -2,8 +2,13 @@ if not fli then
     fli = {}
 end
 
+flientities = 
+{
+  "fluid-level-indicator",
+  "fluid-level-indicator-straight",
+}
+
 require("fli/fli_gui")
-require("compatibility/com_control")
 
 local function players_present()
 
@@ -74,7 +79,7 @@ function removedfli(removed_entity)
   if removed_entity == nil then
     return
   end
-  for _, entityname in ipairs(fluidentities) do
+  for _, entityname in ipairs(flientities) do
     if removed_entity.name == entityname then
       storage.flis[removed_entity.unit_number] = nil
       storage.flitype[removed_entity.unit_number] = nil
@@ -272,7 +277,7 @@ end
 function placedfli(placed_entity)
 
   local surface = placed_entity.surface
-  for _, entityname in ipairs(fluidentities) do
+  for _, entityname in ipairs(flientities) do
     if placed_entity.name == entityname then
       storage.flis[placed_entity.unit_number] = placed_entity
       create_textbox(placed_entity, surface)
@@ -284,10 +289,9 @@ end
 
 
 function register_flis()
-
   rendering.clear("Fluid-level-indicator")
   for _,surface in pairs(game.surfaces) do
-    for _,fli in pairs(surface.find_entities_filtered{name = fluidentities}) do
+    for _,fli in pairs(surface.find_entities_filtered{name = flientities}) do
       if fli.unit_number~=nil then
         storage.flis[fli.unit_number] = fli
         if storage.flitype[fli.unit_number] == nil then
