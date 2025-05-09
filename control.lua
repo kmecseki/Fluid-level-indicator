@@ -1,7 +1,6 @@
 mod_gui = require("mod-gui")
 require "fli/fli"
--- Turned off for now until further tests are done.
---require("compatibility/com_control")
+require("compatibility/com_control")
 
 
 script.on_event(defines.events.on_built_entity, function(event) placedfli(event.entity) end)

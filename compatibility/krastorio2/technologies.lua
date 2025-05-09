@@ -17,7 +17,7 @@ data:extend(
         recipe = "fluid-level-indicator-straight-k2"
       }
     },
-    prerequisites = {"optics", "kr-steel-fluid-handling"},
+    prerequisites = {"lamp", "kr-steel-fluid-handling"},
     unit =
     {
       count = 75,

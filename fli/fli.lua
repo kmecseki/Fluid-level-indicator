@@ -130,65 +130,63 @@ end
 
 local function fli_update()
 
-  if next(storage.flis)~=nil then
-    for i=0, settings.global["number_of_units_to_check_per_update"].value do
-      storage.fliindex, fli = next(storage.flis, storage.fliindex)
-      if fli~=nil then
-        if fli.valid then
-          local surface = fli.surface
-          if storage.flitype[fli.unit_number] == nil then
-            -- If migration failed
-            storage.flitype[fli.unit_number] = 1
-          end
-          local fluid_count = 0
-          if fli.fluidbox[1]~=nil then
-            if fli.fluidbox[1].amount > 0 then
-              local fluid_count_actual = fli.get_fluid_count(fli.fluidbox[1])
-              local maxfluid = fli.fluidbox.get_capacity(1)
-              local maxfluid = fli.fluidbox.get_prototype(1).volume
-              fluid_count = fluid_count_actual/maxfluid*100 
-            end
-          end
-          local color = {1, 1, 1, 1}
-          color = calc_color(fluid_count, storage.flitype[fli.unit_number])
-          if settings.startup["font-picker"].value=="sprite" then
-            if storage.flidig100[fli.unit_number] ~= nil then
-              if storage.flidig100[fli.unit_number].target ~= { fli.position.x - 0.29, fli.position.y - 0.06 } then 
-                move_textbox(fli)
-              end
-            end
-            storage.flidig1[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),1)
-            storage.flidig10[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),2)
-            storage.flidig100[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),3)
-            storage.flidigpc[storage.fliindex].sprite = "flinumberpc"
-            storage.flidig1[fli.unit_number].color = color
-            storage.flidig10[fli.unit_number].color = color
-            storage.flidig100[fli.unit_number].color = color
-            storage.flidigpc[fli.unit_number].color = color
-          else
-            if storage.flitexts[fli.unit_number].target ~= { fli.position.x, fli.position.y - 0.34 } then
-              move_textbox(fli)
-            end
-            storage.flitexts[fli.unit_number].text = tostring(string.format("%.f",fluid_count)).."%"
-            storage.flitexts[fli.unit_number].color = color
-          end
-        else
-          if settings.startup["font-picker"].value=="sprite" then
-            destroyit(storage.flidig1[storage.fliindex])
-            destroyit(storage.flidig10[storage.fliindex])
-            destroyit(storage.flidig100[storage.fliindex])
-            destroyit(storage.flidigpc[storage.fliindex])
-            storage.flidig1[storage.fliindex] = nil
-            storage.flidig10[storage.fliindex] = nil
-            storage.flidig100[storage.fliindex] = nil
-            storage.flidigpc[storage.fliindex] = nil
-            storage.flis[storage.fliindex] = nil
-          else
-            destroyit(storage.flitexts[storage.fliindex])
-            storage.flitexts[storage.fliindex] = nil
-            storage.flis[storage.fliindex] = nil
+  if not next(storage.flis) then return end
+
+  for _ = 0, settings.global["number_of_units_to_check_per_update"].value do
+    storage.fliindex, fli = next(storage.flis, storage.fliindex)
+    if not fli then return end
+
+    if fli.valid then
+      local surface = fli.surface
+      local unit_number = fli.unit_number
+      storage.flitype[unit_number] = storage.flitype[unit_number] or 1
+      local fluid_count = 0
+      local fluidbox = fli.fluidbox[1]
+
+      if fluidbox~=nil and fluidbox.amount > 0 then
+        local fluid_count_actual = fli.get_fluid_count(fluidbox)
+        local capacity = fli.fluidbox.get_prototype(1).volume
+        fluid_count = (fluid_count_actual / capacity) * 100
+      end
+
+      local color = {1, 1, 1, 1}
+      color = calc_color(fluid_count, storage.flitype[fli.unit_number])
+      if settings.startup["font-picker"].value=="sprite" then
+        if storage.flidig100[fli.unit_number] ~= nil then
+          if storage.flidig100[fli.unit_number].target ~= { fli.position.x - 0.29, fli.position.y - 0.06 } then 
+            move_textbox(fli)
           end
         end
+        storage.flidig1[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),1)
+        storage.flidig10[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),2)
+        storage.flidig100[storage.fliindex].sprite = get_digit(tostring(string.format("%.f",fluid_count)),3)
+        storage.flidigpc[storage.fliindex].sprite = "flinumberpc"
+        storage.flidig1[fli.unit_number].color = color
+        storage.flidig10[fli.unit_number].color = color
+        storage.flidig100[fli.unit_number].color = color
+        storage.flidigpc[fli.unit_number].color = color
+      else
+        if storage.flitexts[fli.unit_number].target ~= { fli.position.x, fli.position.y - 0.34 } then
+          move_textbox(fli)
+        end
+        storage.flitexts[fli.unit_number].text = tostring(string.format("%.f",fluid_count)).."%"
+        storage.flitexts[fli.unit_number].color = color
+      end
+    else
+      if settings.startup["font-picker"].value=="sprite" then
+        destroyit(storage.flidig1[storage.fliindex])
+        destroyit(storage.flidig10[storage.fliindex])
+        destroyit(storage.flidig100[storage.fliindex])
+        destroyit(storage.flidigpc[storage.fliindex])
+        storage.flidig1[storage.fliindex] = nil
+        storage.flidig10[storage.fliindex] = nil
+        storage.flidig100[storage.fliindex] = nil
+        storage.flidigpc[storage.fliindex] = nil
+        storage.flis[storage.fliindex] = nil
+      else
+        destroyit(storage.flitexts[storage.fliindex])
+        storage.flitexts[storage.fliindex] = nil
+        storage.flis[storage.fliindex] = nil
       end
     end
   end
@@ -291,14 +289,16 @@ end
 function register_flis()
   rendering.clear("Fluid-level-indicator")
   for _,surface in pairs(game.surfaces) do
-    for _,fli in pairs(surface.find_entities_filtered{name = flientities}) do
-      if fli.unit_number~=nil then
-        storage.flis[fli.unit_number] = fli
-        if storage.flitype[fli.unit_number] == nil then
-          storage.flitype[fli.unit_number] = 1
+    for _, name in pairs(flientities) do
+      for _,fli in pairs(surface.find_entities_filtered{name = name}) do
+        if fli.unit_number~=nil then
+          storage.flis[fli.unit_number] = fli
+          if storage.flitype[fli.unit_number] == nil then
+            storage.flitype[fli.unit_number] = 1
+          end
+          create_textbox(fli, surface)
+          storage.fliindex = fli.unit_number
         end
-        create_textbox(fli, surface)
-        storage.fliindex = fli.unit_number
       end
     end
   end
