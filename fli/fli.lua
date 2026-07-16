@@ -141,12 +141,16 @@ local function fli_update()
       local unit_number = fli.unit_number
       storage.flitype[unit_number] = storage.flitype[unit_number] or 1
       local fluid_count = 0
-      local fluidbox = fli.fluidbox[1]
+      local fluidbox = fli.get_fluid_box_prototype(1)
+      local fluid = nil
+      if fluidbox~=nil then
+        fluid = fli.get_fluid(1)
+      end
 
-      if fluidbox~=nil and fluidbox.amount > 0 then
-        local fluid_count_actual = fli.get_fluid_count(fluidbox)
-        local capacity = fli.fluidbox.get_prototype(1).volume
-        fluid_count = (fluid_count_actual / capacity) * 100
+      if fluid~=nil and fluid.amount > 0 then
+        local capacity = fli.get_fluid_capacity(1)
+        local fluid_count_actual = fli.get_fluid_count(fluid)
+        fluid_count = (fluid_count_actual/capacity) * 100
       end
 
       local color = {1, 1, 1, 1}
