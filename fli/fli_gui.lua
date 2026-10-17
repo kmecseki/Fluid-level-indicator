@@ -1,30 +1,44 @@
 function open_fli_gui(player, ent)
+  if not player or not player.valid then
+    return
+  end
+
   if not ent or not ent.valid then
-    for _, entityname in ipairs(flientities) do
-      if ent.name ~= entityname then
-        return
-      end
+    return
+  end
+
+  local is_valid_entity = false
+  for _, entityname in ipairs(flientities) do
+    if ent.name == entityname then
+      is_valid_entity = true
+      break
     end
   end
 
-  if not player then
+  if not is_valid_entity then
     return
   end
-  
+
   storage.currentfliunitnumber = ent.unit_number
+  storage.flitype = storage.flitype or {}
+  storage.flitype[ent.unit_number] = storage.flitype[ent.unit_number] or 1
+
   local frame_flow = player.gui
   if frame_flow.relative.fli_picker then
     frame_flow.relative.fli_picker.destroy()
   end
-  
+
   local fli_picker = frame_flow.relative.add(
   {
     type = "frame",
     name = "fli_picker",
     direction = "vertical",
-    anchor = { gui = defines.relative_gui_type.storage_tank_gui, position = defines.relative_gui_position.bottom  },
+    anchor = {
+      gui = defines.relative_gui_type.pipe_gui,
+      position = defines.relative_gui_position.bottom
+    },
   })
-  
+
   local fli_title = fli_picker.add(
   {
     type = "label",
@@ -39,7 +53,7 @@ function open_fli_gui(player, ent)
     selected_index = storage.flitype[ent.unit_number],
     name = "fli_dropdown"
   })
-end    
+end
 
 
 function close_fli_gui(player, ent)
